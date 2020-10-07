@@ -1,0 +1,775 @@
+openapi: 3.0.0
+info:
+  description: Shamat Web & Mobile App.
+  version: 1.0.0
+  title: 'Shamat API Specificatiion '
+  contact:
+    email: awega2010@gmail.com
+tags:
+  - name: Setting
+    description: Routes of Setting
+servers:
+  - url: 'localhost:5050/api/'
+  - url: 'http://127.0.0.1:4010'
+paths:
+  /setting/commissionRate:
+    post:
+      tags:
+        - Setting
+      summary: Set a new Commisison rate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommissionRate'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Created
+                  detail:
+                    $ref: '#/components/schemas/CommissionRate'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+    get:
+      tags:
+        - Setting
+      summary: getting All Commisison rates
+      parameters:
+        - $ref: '#/components/parameters/AdminAgentAuth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Requested
+                  detail:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CommissionRate'
+        '400':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+    put:
+      tags:
+        - Setting
+      summary: Update the Commisison rate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: 5f65ffbfd01dcc34d00e3eb5
+                rate:
+                  type: number
+                  example: 6
+              required:
+                - id
+                - rate
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Updated
+                  detail:
+                    $ref: '#/components/schemas/CommissionRate'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+    delete:
+      tags:
+        - Setting
+      summary: delete the commision rate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: 5f65ffbfd01dcc34d00e3eb5
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Deleted
+                  detail:
+                    $ref: '#/components/schemas/CommissionRate'
+        '400':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid Id
+        '404':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+  /setting/exchangeRate:
+    post:
+      tags:
+        - Setting
+      summary: Set a new exchangeRate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Created
+                  detail:
+                    $ref: '#/components/schemas/ExchangeRate'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+    get:
+      tags:
+        - Setting
+      summary: getting All ExchangeRates
+      parameters:
+        - $ref: '#/components/parameters/AdminAgentAuth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Requested
+                  detail:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ExchangeRate'
+        '400':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+    put:
+      tags:
+        - Setting
+      summary: Update the ExchangeRate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: 5f65ffbfd01dcc34d00e3eb5
+                rate:
+                  type: number
+                  example: 6
+              required:
+                - id
+                - rate
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Updated
+                  detail:
+                    $ref: '#/components/schemas/ExchangeRate'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+    delete:
+      tags:
+        - Setting
+      summary: delete the exchangeRate
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: 5f65ffbfd01dcc34d00e3eb5
+              required:
+                - id
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Deleted
+                  detail:
+                    $ref: '#/components/schemas/ExchangeRate'
+        '400':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid Id
+        '404':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+  /setting/currency:
+    post:
+      tags:
+        - Setting
+      summary: Add new Currency
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Created
+                  detail:
+                    $ref: '#/components/schemas/Currency'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+    get:
+      tags:
+        - Setting
+      summary: getting All Currencies
+      parameters:
+        - $ref: '#/components/parameters/AdminAgentAuth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Requested
+                  detail:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Currency'
+        '400':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+    put:
+      tags:
+        - Setting
+      summary: Update the currencies
+      parameters:
+        - $ref: '#/components/parameters/AdminAuth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: 5f65ffbfd01dcc34d00e3eb5
+                currencyName:
+                  type: string
+                  enum:
+                    - Dollar
+                    - Birr
+                    - Nakfa
+                    - Dirham
+                shortHand:
+                  type: string
+                  enum:
+                    - USD
+                    - Br
+                    - Nkf
+                    - AED
+                country:
+                  type: string
+                  enum:
+                    - USA
+                    - Ethiopia
+                    - Eritrea
+                    - UAE
+              required:
+                - id
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully Updated
+                  detail:
+                    $ref: '#/components/schemas/ExchangeRate'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          description: Setting Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Setting Not Found
+components:
+  responses:
+    NotFound:
+      description: Transaction not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Transaction not Found
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Body Validation Error
+              detail:
+                type: string
+                example: Invalid Id
+    successfullyUpdated:
+      description: successfully operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: successfully Updated
+              detail:
+                $ref: '#/components/schemas/Transaction'
+  parameters:
+    AdminAuth:
+      name: x-auth-token
+      in: header
+      schema:
+        type: string
+      required: true
+      description: Admin Only
+    ReceiverAgentAuth:
+      name: x-auth-token
+      in: header
+      schema:
+        type: string
+      required: true
+      description: Receiver Agent Only
+    AgentAuth:
+      name: x-auth-token
+      in: header
+      schema:
+        type: string
+      required: true
+      description: Agents Only
+    AdminAgentAuth:
+      name: x-auth-token
+      in: header
+      schema:
+        type: string
+      required: true
+      description: Admin Or Agents
+  schemas:
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+          example: Canada
+        state:
+          type: string
+          example: Alberta
+        city:
+          type: string
+          example: Edmonton
+        phone:
+          type: number
+          example: 712345678
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          example: awega2010@gmail.com
+          minLength: 1
+        password:
+          type: string
+          example: 12345678
+          minLength: 6
+        roles:
+          type: string
+          enum:
+            - Admin
+            - Agent
+        isActive:
+          type: boolean
+          example: true
+        isApproved:
+          type: boolean
+          example: false
+        isOnHold:
+          type: boolean
+          example: false
+    ClientContact:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Awet
+        lastName:
+          type: string
+          example: Nuguse
+        address:
+          $ref: '#/components/schemas/Address'
+        accountNumber:
+          type: number
+          example: 812387630101
+        bankName:
+          type: string
+          example: Wegagen
+        remark:
+          type: string
+    ExchangeRate:
+      type: object
+      properties:
+        fromCurrency:
+          $ref: '#/components/schemas/Currency'
+        toCurrency:
+          $ref: '#/components/schemas/Currency'
+        rate:
+          type: number
+    CommissionRate:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        rate:
+          type: number
+    Money:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        amount:
+          type: number
+    Currency:
+      type: object
+      properties:
+        currencyName:
+          type: string
+          example: Dollar
+        shortHand:
+          type: string
+          example: USD
+        country:
+          type: string
+          example: USA
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Awet
+        middleName:
+          type: string
+          example: Weldehaimanot
+        lastName:
+          type: string
+          example: Nuguse
+        dob:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum:
+            - Male
+            - Female
+        address:
+          $ref: '#/components/schemas/Address'
+        login:
+          $ref: '#/components/schemas/Login'
+        senderMaxCriticalAmount:
+          $ref: '#/components/schemas/RequestMoney'
+        receiverMInCriticalAmount:
+          $ref: '#/components/schemas/RequestMoney'
+        receiverSalaryPerTransaction:
+          $ref: '#/components/schemas/Money'
+        senderExchangeRate:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExchangeRate'
+        senderCommissionRate:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommissionRate'
+    TransactionAction:
+      type: object
+      properties:
+        actor:
+          type: string
+          format: uuid
+        action:
+          type: string
+          enum:
+            - CREATE
+            - EDIT
+            - ASSIGN
+            - FORCE_RETURN
+            - REQUEST_RETURN
+            - CANCEL
+            - DELIVER
+            - NOT_DELIVER
+            - ACCEPT_REQUEST
+            - REJECT_REQUEST
+        reason:
+          type: string
+          example: there is error in commision rate
+        date:
+          type: string
+          format: date
+    RequestMoney:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        amount:
+          type: number
+          example: 500
+    RequestUser:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Awet
+        middleName:
+          type: string
+          example: Weldehaimanot
+        lastName:
+          type: string
+          example: NUguse
+        dob:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum:
+            - Male
+            - Female
+        address:
+          $ref: '#/components/schemas/Address'
+        login:
+          type: object
+          properties:
+            email:
+              type: string
+              example: awega2010@gmail.com
+            password:
+              type: string
+              example: 12345678
+              minLength: 6
+    RequestTransaction:
+      type: object
+      properties:
+        senderClient:
+          $ref: '#/components/schemas/ClientContact'
+        receiverClient:
+          $ref: '#/components/schemas/ClientContact'
+        moneyToTransfer:
+          $ref: '#/components/schemas/RequestMoney'
+        moneyToPay:
+          $ref: '#/components/schemas/RequestMoney'
+        exchangeRate:
+          type: number
+          example: 43
+        commissionRate:
+          type: number
+          example: 5
+        totalPayment:
+          $ref: '#/components/schemas/RequestMoney'
+    Transaction:
+      type: object
+      properties:
+        senderClient:
+          $ref: '#/components/schemas/ClientContact'
+        receiverClient:
+          $ref: '#/components/schemas/ClientContact'
+        moneyToTransfer:
+          $ref: '#/components/schemas/RequestMoney'
+        moneyToPay:
+          $ref: '#/components/schemas/RequestMoney'
+        totalPayment:
+          $ref: '#/components/schemas/RequestMoney'
+        remark:
+          type: string
+        status:
+          type: number
+          enum:
+            - 0
+            - 100
+            - 200
+            - 800
+          description: |
+            Status Codes:
+              * `0` - when a transaction created
+              * `100` - when a transaction assigned to a receiver agent
+              * `200` - when a transaction is requested for * `return`
+              * `800` - when a transaction closed in aither way * `delivered` or * `canceled`
+        senderAgent:
+          type: string
+          example: 5f65ffbfd01dcc34d00e3eb5
+        receiverAgent:
+          type: string
+          example: 5f65ffbfd01dcc34d00e3eb5
+        admin:
+          type: string
+          example: 5f65ffbfd01dcc34d00e3eb5
+        commissionRate:
+          type: number
+        exchangeRate:
+          type: number
+        commissionAmount:
+          type: number
+        isDelivered:
+          type: boolean
+        isCanceled:
+          type: boolean
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionAction'
