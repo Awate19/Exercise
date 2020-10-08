@@ -9,7 +9,7 @@ tags:
   - name: Setting
     description: Routes of Setting
 servers:
-  - url: 'localhost:5050/api/'
+  - url: 'localhost:5050/api'
   - url: 'http://127.0.0.1:4010'
 paths:
   /setting/commissionRate:
@@ -37,6 +37,25 @@ paths:
                     example: successfully Created
                   detail:
                     $ref: '#/components/schemas/CommissionRate'
+              examples:
+                example-1:
+                  value:
+                    message: successfully Created
+                    detail:
+                      currency:
+                        currencyName: Dollar
+                        shortHand: USD
+                        country: USA
+                      rate: 0
+                example-2:
+                  value:
+                    message: successfully Created
+                    detail:
+                      currency:
+                        currencyName: Euro
+                        shortHand: Eur
+                        country: Europe
+                      rate: 0
         '400':
           $ref: '#/components/responses/ValidationError'
     get:
