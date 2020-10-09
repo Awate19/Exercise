@@ -241,6 +241,16 @@ paths:
                   message:
                     type: string
                     example: Setting Not Found
+        '404':
+          description: validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: example 404
     put:
       tags:
         - Setting
